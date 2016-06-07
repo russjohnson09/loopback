@@ -7,6 +7,9 @@
  * Module Dependencies.
  */
 
+var SG = require('strong-globalize');
+var g = SG();
+
 var PersistedModel = require('../../lib/loopback').PersistedModel;
 var loopback = require('../../lib/loopback');
 var utils = require('../../lib/utils');
@@ -110,7 +113,7 @@ module.exports = function(Change) {
           })
           .join('\n');
 
-        var msg = 'Cannot rectify ' + modelName + ' changes:\n' + desc;
+        var msg = g.f('Cannot rectify %s changes:\n%s', modelName, desc);
         err = new Error(msg);
         err.details = { errors: errors };
         return callback(err);

@@ -3,6 +3,9 @@
 // This file is licensed under the MIT License.
 // License text available at https://opensource.org/licenses/MIT
 
+var SG = require('strong-globalize');
+var g = SG();
+
 var models = require('../../lib/models');
 
 var loopback = require('../../');
@@ -37,15 +40,15 @@ var data = { pushSettings: [
 ] };
 
 Application.create(data, function(err, data) {
-  console.log('Created: ', data.toObject());
+  console.log(g.f('Created: %s', data.toObject()));
 });
 
 
-Application.register('rfeng', 'MyApp', { description: 'My first mobile application' },
+Application.register('rfeng', 'MyApp', { description: g.f('My first mobile application') },
 function(err, result) {
   console.log(result.toObject());
 
   result.resetKeys(function(err, result) {
-    console.log(result.toObject());
+    g.log(result.toObject());
   });
 });
