@@ -4,11 +4,11 @@
 // License text available at https://opensource.org/licenses/MIT
 
 var deprecated = require('depd')('loopback');
-var m = require('loopback-context-cls/server/middleware/per-request-context');
+var impl = require('loopback-context/server/middleware/per-request-context');
 
 module.exports = function() {
-  deprecated('loopback#context middleware is deprecated. ' +
-    'Consider using different means of passing the context around. ' +
-    'As a short-term fix, use loopback-context-cls module.');
-  return m.apply(this, arguments);
+  deprecated('loopback#context middleware is deprecated. See ' +
+    'https://docs.strongloop.com/display/APIC/Using%20current%20context ' +
+    'for more details.');
+  return impl.apply(this, arguments);
 };
